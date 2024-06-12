@@ -119,13 +119,90 @@ console.log(languages.concat(languages1))
 console.log(languages.slice(0,1));
 */
 
+/*
 //Tham so trong ham
 //1.tham so
 
 
 
-function writeLog(massage) {
+function writeLog(massage) { //masage la tham so
    console.log(massage)
 }
 
-writeLog('test massage');
+writeLog('test massage'); //test massage la doi so
+*/
+
+/*
+//Return trong hàm JS
+
+var isComfirm = confirm('message');
+
+console.log(isComfirm);
+
+function cong(a,b){
+   //return a.toString() + b.toString();
+   return [a,b];
+}
+
+var result = cong(5,7);
+console.log(result);
+// khi mà định nghĩa những function cùng tên thì nó sẽ trả về kết quả
+//của function cuối cùng
+ 
+// function trong function
+function showMassage() {
+   function showMassage2() {
+      console.log("I'm Khiem Tran");
+   }
+}
+
+console.log(showMassage);
+
+// cac function trong JS
+-Declaration function:
+function showMassage() {
+
+}
+
+-Experession function
+var showMessage2 = function() {
+
+}
+setTimeout(function () {
+
+})
+*/
+
+//Object trong JavaScript
+
+var myInfo = {
+   name: 'Khiem Tran',
+   age: 18,
+   address: 'Nha Trang',
+   [emailKey]: 'khiemtran@145',
+   getName: function() {
+      return this.name;
+   }
+}
+
+//tao them 1 key moi va var moi sau khi object da dc tao
+myInfo.email = 'khiemtran@';
+myInfo['my-email'] = 'khiem tran';
+
+console.log(myInfo)
+
+//lay mot key tu trong Object
+console.log(myInfo.name);
+console.log(myInfo['study']); //mot key khong co se tra ve undefined
+//lay key tu 2 bien
+var myKey = 'address';
+console.log(myInfo[myKey]);
+//them 1 key vao bien
+var emailKey = 'email';
+console.log(myInfo)
+
+//xoa 1 key
+delete myInfo.name
+console.log(myInfo)
+//function trong Object
+console.log(myInfo.getName());
