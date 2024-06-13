@@ -173,6 +173,7 @@ setTimeout(function () {
 })
 */
 
+/*
 //Object trong JavaScript
 
 var myInfo = {
@@ -206,3 +207,40 @@ delete myInfo.name
 console.log(myInfo)
 //function trong Object
 console.log(myInfo.getName());
+*/
+
+/*//Object constructor
+
+// var User  = function(firstName,lastName,Avatar) {}
+
+function User(firstName,lastName,avatar) {
+   this.firstName = firstName;
+   this.lastName = lastName;
+   this.avatar = avatar;
+
+   this.getName = function(){
+      return`${firstName} ${lastName}`; 
+   }
+}
+
+User.prototype.className = 'F8';
+User.prototype.getclassName = function(){
+   return this.className;
+}
+
+var author = new User('Khiem','Tran','avatar');
+var user = new User('Khoa','Tran','avatar');
+console.log(user.getclassName());
+
+// //tạo thêm một thuộc tính mới cho từng cái user . VD
+// author.title = 'Hello mn nguoi';
+// user.comment = 'Chao anh';
+
+// console.log(author);
+// console.log(user)
+// console.log(author.getName());
+// console.log(user.getName());
+*/
+
+//Đối tượng Date
+var date = Date();

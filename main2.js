@@ -60,20 +60,20 @@
 // console.log((pi.toFixed(3)))
 // console.log(typeof pi.toFixed(3))
 
-var languages = [
-    'JavaScript',
-    'PHP',
-    'Ruby',
-]
+// var languages = [
+//     'JavaScript',
+//     'PHP',
+//     'Ruby',
+// ]
 
-console.log(languages);
-console.log(typeof languages);
-console.log(Array.isArray(languages));
-console.log(languages.length);
-console.log(languages[2]) //cap nhat dia chi khong se tra ve undefined
-console.log(languages.toString());
-console.log(typeof languages.toString());
-console.log(languages.pop())
-console.log(languages)
-console.log(languages.push('Dart'))
-console.log(languages)
+// console.log(languages);
+// console.log(typeof languages);
+// console.log(Array.isArray(languages));
+// console.log(languages.length);
+// console.log(languages[2]) //cap nhat dia chi khong se tra ve undefined
+// console.log(languages.toString());
+// console.log(typeof languages.toString());
+// console.log(languages.pop())
+// console.log(languages)
+// console.log(languages.push('Dart'))
+// console.log(languages)
