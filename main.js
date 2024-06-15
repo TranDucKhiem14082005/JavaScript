@@ -242,5 +242,190 @@ console.log(user.getclassName());
 // console.log(user.getName());
 */
 
+/*
 //Đối tượng Date
-var date = Date();
+var date = new Date();
+console.log(date)
+console.log(typeof date)
+
+// cach lay thoi gian
+var year = date.getFullYear();
+console.log(year)
+var month = date.getMonth() + 1;
+console.log(month);
+var day = date.getDate();
+console.log(day)
+*/
+
+/*
+// if - else
+
+var date  = 2;
+if (date == 2) {
+   console.log('hôm nay là thứ');
+} else if(date == 3){
+   console.log('hom nay la thu 3');
+}
+*/
+/*
+//switch
+
+//no se so sanh mot cac case bang toan tu ===
+//neu case nao dung ma khong break thì nó sẽ lọt vào các case bên dưới
+//nó sẽ thực hiện luôn.
+//những trường hợp nào có ít nhất 3case thì sẽ dùng switch-case
+//còn không thì sẽ dùng if-else
+var date = 3;
+switch(date) {
+   case 2:
+   case 3:
+   case 4:
+   case 5:
+      console.log('thu 2,3,4,5 la ngay trong tuan');
+      break;
+   case 6:
+      console.log("hom nay la thu 6")
+      break;
+   default:
+      console.log('khong phai ngay trong tuan');
+}
+*/
+
+/*
+// toán tử 3 ngôi - ternary operator
+var course = {
+   name: 'JavaScript',
+   coin: 250,
+}
+
+if(course.coin>0){
+   console.log(`${course.coin} coins`);
+}else {
+   console.log('Mien phi');
+}
+
+//toan tu 3 ngoi cho vi du tren
+var result = course.coin>0 ? `${course.coin} coins` : 'Mien phi';
+console.log(result);
+//vd trên được hiểu rằng nếu mà so tiên lớn hơn 0 thi nó sẽ in ra so tien
+//con khong thi no se in ra miễn phí.
+
+// một ví dụ khác về toán tử 3 ngôi
+//ví dụ về tìm số lớn nhất trong hai số
+var a = 2;
+var b = 4;
+var max = a>b?a:b;
+console.log(max)
+//vd dụ trên có nghĩa là sao. nếu mà a>b thì max sẽ bằng a
+//còn b > a thì max sẽ bằng b
+
+// ung dung của vòng lặp for để có thể lấy ra phần tử của mang
+
+var myArray = [
+   'JavaScript',
+   'PHP',
+   'Ruby',
+   'Java',
+   'Python',
+   'Dart'
+]
+
+var arrayLength = myArray.length;
+for(var i = 0; i<arrayLength; i++){
+   console.log(myArray[i]);
+}
+*/
+
+/*
+// For/in loop
+
+//Object
+   var myInfo = {
+   name: 'Khiem Tran',
+   age: 18,
+   address: "Nha Trang"
+}
+
+for(var bien in myInfo){
+   console.log(myInfo[bien]); 
+}
+
+//Array
+ var languages = [
+   'JavaScript',
+   'PHP',
+   'Dart',
+   'Java',
+   'Python'
+ ]
+
+ for(var bien in languages){
+   console.log(languages[bien]);
+ }
+
+ //String
+ var myString = 'JavaScript';
+ for(var bien in myString){
+   console.log(myString[bien]);
+ }
+ */
+
+ /*
+ // For/of loop
+
+ //Array
+ var languages = [
+   'JavaScript',
+   'PHP',
+   'Dart'
+ ];
+
+ for(var value of languages){
+   console.log(value);
+ }
+
+ //String
+ var languages1= 'JavaScript';
+ for(var value of languages1){
+   console.log(value)
+ }
+
+ //Object
+
+ var myInfo = {
+   name: 'Khiem Tran',
+   age: 18
+ }
+// for(var value of myInfo){
+//    console.log(value) // khoong lay duoc
+// }
+console.log(Object.keys(myInfo)) // lay ra cac key duoi dang la Array
+for(var value of Object.keys(myInfo)){
+   console.log(myInfo[value]) // lay ra duoc cac key  va
+   //lay duoc cac gia tri cua cac key
+}
+
+console.log(Object.values(myInfo))//lay ra cac values duoi dang Array
+*/
+
+/*
+// While loop
+
+var myArray = [
+   'JavaScript',
+   'Java'
+]
+ var i = 0;
+ while(i<myArray.length){
+    console.log(myArray[i]);
+   i++;
+ }
+*/
+
+
+ // do/while loop
+var i = 0;
+do{
+   i++;
+   console.log(i);
+}while(i<10);
