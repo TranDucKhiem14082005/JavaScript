@@ -423,9 +423,104 @@ var myArray = [
 */
 
 
- // do/while loop
-var i = 0;
-do{
-   i++;
+//  // do/while loop
+// var i = 0;
+// do{
+//    i++;
+//    console.log(i);
+// }while(i<10);
+
+/*
+// break and continue in all the loop
+for(var i = 0; i<10;i++){
+   // console.log(i);
+   // if(i === 5){
+   //    break;
+   if(i%2 !== 0){
+      continue;
+   }
    console.log(i);
-}while(i<10);
+   
+   }
+
+   // vòng lặp lồng nhau (Nested loop)
+   var myArray = [
+      [1,2],
+      [3,4],
+      [5,6]
+   ]
+   for(var i =0;i<myArray.length;i++){
+      for(var j = 0;j<myArray[i].length;j++){
+         console.log(myArray[i][j]);
+      }
+   }
+   
+   for(var i = 100; i>=0; i-=5){
+      console.log(i);
+   }
+*/
+
+
+//Lam viec voi Array
+
+var courses = [
+   {
+      id: 1,
+      name: 'JavaScript',
+      coin: 250
+   },
+   {
+      id: 2,
+      name: 'Ruby',
+      coin: 0
+   },
+   {
+      id: 3,
+      name: 'ReactJS',
+      coin: 400
+   },
+   {
+      id: 1,
+      name: 'Python',
+      coin: 300
+   },
+];
+
+courses.forEach(function(course,index) { //duyet qua cac phan tu cua mang
+   console.log(index,course)
+}); //truyen vao mot ham (call back)
+
+var isFree = courses.every(function(course) {
+      return course.coin === 0; //kiem tra lan luot tung thang
+});
+
+console.log(isFree) //phai tra ve dung 0 het thi moi tra ve true
+
+var isFree1 = courses.some(function(course) { //kiem tra tung thang
+   return course.coin === 0; //chi can co 1 thang dung thi no se tra ve true
+});
+console.log(isFree1);
+
+var right = courses.find(function(name1) { //dung de tim kiem
+   return name1.name === 'JavaScript'; //neu tat ca cac phan tu khong dung thi no
+   //se tra ve undefined . Neu ma no ktra dung thi no se ket thuc luon (tra ve 1 doi tuong)
+}) //con ve filter thi no se tim kiem het luon tat ca cac phan tu neu no dung (tao ra mot list
+//cac danh sanh dung)
+
+console.log(right);
+
+//map()
+
+function couresHandler(course, index,originArray){ //index tuc la cai key tuong ung khi no lap qua
+   return {
+      id: course.id,
+      name: `Khoa hoc: ${course.name}`,
+      coin: course.coin,
+      coinText: `Gia: ${course.coin}`,
+      index:index,
+      originArray:originArray,
+   }
+}
+var newCourses = courses.map(couresHandler);
+
+console.log(newCourses)
