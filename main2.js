@@ -502,4 +502,4 @@ var check = courses.filter(function(nickname) {
    return nickname.coin === 0; //liệt kê một danh sách các phần tử.
 });
 
-console.log(check);
+console.log(check);S

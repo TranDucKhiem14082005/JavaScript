@@ -461,66 +461,175 @@ for(var i = 0; i<10;i++){
 */
 
 
+/*
 //Lam viec voi Array
 
-var courses = [
+// var courses = [
+//    {
+//       id: 1,
+//       name: 'JavaScript',
+//       coin: 250
+//    },
+//    {
+//       id: 2,
+//       name: 'Ruby',
+//       coin: 500
+//    },
+//    {
+//       id: 3,
+//       name: 'ReactJS',
+//       coin: 400
+//    },
+//    {
+//       id: 1,
+//       name: 'Python',
+//       coin: 300
+//    },
+// ];
+
+// courses.forEach(function(course,index) { //duyet qua cac phan tu cua mang
+//    console.log(index,course)
+// }); //truyen vao mot ham (call back)
+
+// var isFree = courses.every(function(course) {
+//       return course.coin === 0; //kiem tra lan luot tung thang
+// });
+
+// console.log(isFree) //phai tra ve dung 0 het thi moi tra ve true
+
+// var isFree1 = courses.some(function(course) { //kiem tra tung thang
+//    return course.coin === 0; //chi can co 1 thang dung thi no se tra ve true
+// });
+// console.log(isFree1);
+
+// var right = courses.find(function(name1) { //dung de tim kiem
+//    return name1.name === 'JavaScript'; //neu tat ca cac phan tu khong dung thi no
+//    //se tra ve undefined . Neu ma no ktra dung thi no se ket thuc luon (tra ve 1 doi tuong)
+// }) //con ve filter thi no se tim kiem het luon tat ca cac phan tu neu no dung (tao ra mot list
+// //cac danh sanh dung)
+
+// console.log(right);
+
+//***map()
+
+// function couresHandler(hello, index,originArray){ //index tuc la cai key tuong ung khi no lap qua
+//    return hello; //mình cho nó return về một tham số nào cũng được
+//    //nếu mà mình không thay đổi gì hết thì nó sẽ trả về lại mảng ban đầu
+// }
+// var newCourses = courses.map(couresHandler);
+
+// console.log(newCourses)
+
+// function couresHandler(course, index,originArray){ //index tuc la cai key tuong ung khi no lap qua
+//    return {
+//       id: course.id,
+//       name: `Khoa hoc: ${course.name}`,
+//       coin: course.coin,
+//       coinText: `Gia: ${course.coin}`,
+//       index:index,
+//       originArray:originArray,
+//    }
+// }
+// var newCourses = courses.map(couresHandler);
+
+// console.log(newCourses)
+
+//reduce();
+// //cach dung vong lap (vd ve viec tinh tong cac coin cua khoa hoc)
+// var totalCoin = 0;
+// for(var course of courses) {
+//    totalCoin += course.coin;
+// }
+
+// console.log(totalCoin)
+
+//1. Dễ hiểu: vòng lặp dễ hiểu hơn
+//2.ngắn gọn: reduce ngắn hơn
+//3.Hiệu năng: vòng lặp nhanh hơn một xíu
+
+//lý thuyết để hiểu rõ nó là gì
+// var i = 0;
+// function coinHandler(accumulator,currentValue,currentIndex,originArray) { //accumulator:  nó là biến lưu trữ
+//    // số 0 được tạo ra để gán cho thằng accumulator
+//    i++;
+//    var total = accumulator + currentValue.coin;
+//    console.table({
+//       'Lượt chạy: ': i,
+//       'Biến lưu trữ:': accumulator,
+//       'Giá của khóa học: ': currentValue.coin,
+//       'Cái mà mình tích trữ được: ': total
+//    });
+//    return total;
+// }
+
+// var totalCoin = courses.reduce(coinHandler,0); //coinHandler là đối số, còn 0 là gtri khởi tạo
+
+// console.log(`Tổng tiền của các khóa học: `,totalCoin);
+
+
+//cách làm thực tế:
+//Nên đặt tên accumulator và currentValue sao cho nó đúng với ngữ
+//cảnh của công việc cần làm
+// var totalCoin = courses.reduce(function(total,course){
+//    return  total + course.coin;
+// },0);
+
+// console.log(totalCoin);
+ 
+
+//Bài Tập làm thêm
+
+// //Flat -"Làm phằng" mảng từ Depth array - "Mảng sâu" tức là sau khi hoàn thành thì chúng
+// //ta được một mảng chứa được các phần tử giống nhau.
+
+var depthArray = [1, 2, [3, 4], 5,  6,  [7 , 8, 9]];//Mảng sâu
+
+var flatArray = depthArray.reduce(function(flatUouput,depthItem) {
+   return flatUouput.concat(depthItem);
+
+},[]); //mục tiêu của chúng ta là tạo ra một mang => gtri khởi tạo là []
+console.log(flatArray);
+
+
+//Lấy ra các khóa học đưa vào 1 mảng mới
+
+var topics = [
    {
-      id: 1,
-      name: 'JavaScript',
-      coin: 250
+      topic: "Front-end",
+      courses: [
+         {
+            id: 1,
+            title: "HTML,CSS"
+         },
+         {
+            id: 2,
+            title: "JavaScript"
+         }
+      ]
    },
    {
-      id: 2,
-      name: 'Ruby',
-      coin: 0
-   },
-   {
-      id: 3,
-      name: 'ReactJS',
-      coin: 400
-   },
-   {
-      id: 1,
-      name: 'Python',
-      coin: 300
-   },
+      topic: "Back-end",
+      courses: [
+         {
+            id: 1,
+            title: "PHP"
+         },
+         {
+            id: 2,
+            title: "Node JS"
+         }
+      ]
+   }
 ];
 
-courses.forEach(function(course,index) { //duyet qua cac phan tu cua mang
-   console.log(index,course)
-}); //truyen vao mot ham (call back)
+var newCourses = topics.reduce(function(course,topic){
+   return course.concat(topic.courses);
+},[])
 
-var isFree = courses.every(function(course) {
-      return course.coin === 0; //kiem tra lan luot tung thang
-});
+console.log(newCourses);
+*/
 
-console.log(isFree) //phai tra ve dung 0 het thi moi tra ve true
 
-var isFree1 = courses.some(function(course) { //kiem tra tung thang
-   return course.coin === 0; //chi can co 1 thang dung thi no se tra ve true
-});
-console.log(isFree1);
-
-var right = courses.find(function(name1) { //dung de tim kiem
-   return name1.name === 'JavaScript'; //neu tat ca cac phan tu khong dung thi no
-   //se tra ve undefined . Neu ma no ktra dung thi no se ket thuc luon (tra ve 1 doi tuong)
-}) //con ve filter thi no se tim kiem het luon tat ca cac phan tu neu no dung (tao ra mot list
-//cac danh sanh dung)
-
-console.log(right);
-
-//map()
-
-function couresHandler(course, index,originArray){ //index tuc la cai key tuong ung khi no lap qua
-   return {
-      id: course.id,
-      name: `Khoa hoc: ${course.name}`,
-      coin: course.coin,
-      coinText: `Gia: ${course.coin}`,
-      index:index,
-      originArray:originArray,
-   }
-}
-var newCourses = courses.map(couresHandler);
-
-console.log(newCourses)
+//includes method . Tồn tại trong Array va String
+console.log(Array.prototype.includes())
+ 
