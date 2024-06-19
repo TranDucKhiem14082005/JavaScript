@@ -630,6 +630,351 @@ console.log(newCourses);
 */
 
 
-//includes method . Tồn tại trong Array va String
-console.log(Array.prototype.includes())
+//includes method . Tồn tại trong Array va String.
+//kiếm tra xem trong String hay Array có thứ gì đó không
+//includes('cái muốn tìm kiếm','vị trí bắt đầu để tìm kiếm)
+// console.log(Array.prototype.includes);
+// console.log(String.prototype.includes);
  
+/*
+//Math Object
+-Math.PI -> trả về số pi 3.14...
+-Math.round() -> làm tròn số -> đưa về số nguyên
+-Math.abs() -> giá trị tuyệt đối của một số
+-Math.ceil() -> làm tròn trên
+-Math.floor() -> Làm tròn dưới
+-Math.random() ->trả về một dãy số thập phân nhỏ hơn 1 -> đặt ra một các tên ngẫu nhiên
+// tạo ra một dãy số ngẫu nhiên trong một khoảng nào đó -> làm ra chương trình khuyến mãi
+-Math.min() -> tìm ra số nhỏ nhất
+-Math.max() -> Tìm ra số lớn nhất
+// console.log(Math.PI)
+
+*/
+/*
+//Callback
+
+//Là hàm (function) được truyền qua đối số
+//khi gọi hàm khác
+
+// tóm lại
+// 1. Là hàm
+// 2. Được truyền qua đối số của môt function khác
+// 3. Được gọi lại (trong hàm nhận đối số)
+
+// function myFunction(param){
+//    console.log(param);
+// }
+// myFunction('Học lập trình'); 
+
+   //mục đích làm cho map2 sẽ thực hiện như map( )
+Array.prototype.map2 = function(callback) {
+   var output = [], arrayLength = this.length;
+   for(var i = 0;i<arrayLength;i++) { //b1 lap qua cái map2 này
+      //b2 callback no
+      var result = callback(this[i],i);
+      output.push(result);
+   }
+   return output;
+}
+
+
+
+
+// //muốn gọi lại được thì phải truyền map2 function
+// //output cuối cùng là biến htmls
+// var htmls = courses.map2(function(course,index) {
+//    return `<h2>${course}</h2>`; //bước này thì function chỉ return về cho map2.
+//    //cái mình muốn là map2 return về htmls => thêm một mảng trống để chứa
+//    //những cái thẻ h2 vào từ đó mình sẽ cho nó return về
+//    //tiếp theo sẽ cho no return về return `<h2>${course}</h2>`;
+
+// }); // map2 không có trong prototype của Array nên mình phải
+// //định nghĩa nó
+
+// console.log(htmls);
+// // var htmls = courses.map(function(course(tra ve),index(tra ve)) {
+// //    return `<h2>${course}</h2>`;
+// // })
+// // console.log(htmls.join(''))
+
+var courses = [
+   'JavaScript',
+   'PHP',
+   'Ruby',
+   
+]
+
+//vd về forEach2();
+Array.prototype.forEach2 = function(callback2){
+   for(var value in this) {
+      if(this.hasOwnProperty(value)){
+         console.log(this[value],value,this);
+      }
+   }
+
+};
+
+
+
+courses.forEach2(function(course,index,originArray){
+   console.log(course,index,originArray);
+});
+
+
+Tự làm nhưng đã sai. Bây giờ đi sửa lại theo sự hướng dẫn để hiểu hơn
+
+// //vd ve every2();
+// Array.prototype.every2 = function(callback3){
+//    var arrayLength = this.length;
+//    for(var i = 0; i < arrayLength; i++){
+//       if(callback3(this[i] >='0')){
+//          console.log(callback3(this[i]));
+//       }else console.log('Dữ liệu sai');
+//    }
+// }
+// courses.every2(function(course){
+//    return course;
+// })
+
+// //some2();
+// Array.prototype.some2 = function(callback4){
+//    var arrayLength = this.length;
+//    for(var i = 0; i < arrayLength;i++){
+//       if(callback4(this[i]) != '0' || callback4(this[i]) != 0){
+//          console.log(true);
+//       }else console.log(false)
+//    }
+// }
+
+// courses.some2(function(course){
+//    return course;
+// }) 
+
+
+//Filter2
+
+var courses = [
+   {
+      name: 'JavaScript',
+      coin: 680,
+      isFinish: true,
+   },
+   {
+      name: 'PHP',
+      coin: 860,
+      isFinish: true,
+   } ,
+   {
+      name: 'Ruby',
+      coin: 980,
+      isFinish: true,
+   }
+];
+
+Array.prototype.filter2 = function(callback4) {
+   var output = [];
+   for(var index in this){
+      if(this.hasOwnProperty(index)){
+         var result = callback4(this[index],index,this);
+         if(result){
+            output.push(this[index]);
+         }
+      }
+   }
+   return output;
+}
+
+var filterCourses = courses.filter2(function(course,index,array){
+   // console.log(course,index,array);
+   return course.coin > 700;
+});
+
+console.log(filterCourses)
+
+//Some2(): true/false //đưa vào một array rỗng thì nó sẽ không chay qua
+
+Array.prototype.some2 = function(callback5){
+   for(var index in this){
+      if(this.hasOwnProperty(index)){
+         if(callback5(courses[index],index,this)){
+            return true;
+         }
+      }
+   }
+   return false;
+}
+
+var result = courses.some2(function(course,index,array){
+   return course.isFinish;
+})
+
+console.log(result);
+
+//every2() : true/false
+
+Array.prototype.every2 = function(callback6){
+   var output = true;
+   for(var index in this){
+      if(this.hasOwnProperty(index)){
+         var result = callback6(this[index],index,this);
+         if(!result){
+            output = false;
+            break;
+         }
+      }
+   }
+   return output;
+}
+
+var result = courses.every2(function(course,index,array){
+   return course.isFinish;
+});
+
+console.log(result);
+
+*/
+
+/*
+//Đệ quy: hàm gọi hàm
+//function deQuy(){
+   deQuy(); // như này gọi là đệ quy
+}
+
+
+// 1. Xác định được điểm dừng
+// 2. Logic handle => Tạo ra điểm dừng
+deQuy();
+
+// function countDown(number){
+//    if(number > 0){
+//       console.log(number);
+//       return countDown(number-1);
+//    }
+//    return number;
+// }
+
+// countDown(4);
+
+
+// function loop(start,end,callback){
+//    if(start < end){
+//       callback(start);
+//       return loop(start + 1, end,callback);
+//    }
+// }
+
+// var array = ['JavaScript','PHP','Ruby'];
+
+// loop(0,array.length,function(index){
+//    console.log(array[index]);
+// });
+
+
+// function giaiThua(number){
+//    var output = 1;
+//    for(var i = number; i> 0; i--){
+//       output = output * i;
+//    }
+//    return output;
+// }
+
+// giaiThua(3);
+// //de quy
+// function giaThuaDQ(number){
+//    if(number > 0){
+//       return number * giaThuaDQ(number -1)
+//    }
+//    return 1;
+// }
+
+// console.log(giaThuaDQ(3))
+
+function countDown(number){
+   if(number > 0){
+      console.log(number);
+      return countDown(number - 1);
+   }
+};
+
+countDown(4);
+
+function loop(start,end,callback){
+   if(start < end){
+      callback(start);
+      return loop(start+1,end,callback);
+   }
+
+}
+
+
+var array  = ['JavaScript','PHP','Dart','JavaScript'];
+
+loop(0,array.length,function(index){
+   console.log(array[index]);
+})
+
+
+function giaiThua(number){
+   if(number > 0){
+      return number * giaiThua(number - 1);
+   }
+   return 1;
+}
+
+console.log(giaiThua(3));
+
+
+//  bài tập
+// input = ['a', 'b', 'c', 'a', 'b'];
+// output = ['a', 'b', 'c'];
+function removeDuplicates(arr, i = 0, result = []) {
+   if (i === arr.length) { // kiểm tra xem i có bằng độ dài của arr
+      //nếu bằng thì return về mảng mới luôn
+     return result;
+   }
+
+   const current = arr[i];
+   let exists = false;
+   for (let j = 0; j < result.length; j++) {
+     if (result[j] === current) {
+       exists = true;
+       break;
+     }
+   }
+ 
+   if (!exists) {
+     result.push(current);
+   }
+ 
+   return removeDuplicates(arr, i + 1, result);
+ }
+ 
+ const input = ['a', 'b', 'c', 'a', 'b'];
+ const output = removeDuplicates(input);
+ console.log(output); // Output: ['a', 'b', 'c']
+
+*/
+
+/*
+//HTML DOM? theo tiêu chuẩn của W3C(đưa ra các quy chuẩn cho all WEB)
+//có 3 thành phần
+-1. Element
+-2. Attribute
+-3. Text
+
+// chúng ta có thể sd JavaScript để truy cập vào 3 thành phần trên và
+//làm thay đổi giao diện của web
+*/
+//Node: điểm giao nhau, giống như những cục gồ lên của đậu que
+
+//----------------------------------------------
+
+//JavaScript: chỉ là phương tiện để truy xuất vào mô hình DOM (HTML DOM không phải là của JavaScript)
+//JS có thể chạy: Browser(trình duyệt) | Server (NodeJS)
+
+//Browser: HTML -> DOM -> WEB API (DOM API): chạy trên WEB thôi
+//Tại sao JS chạy Browser lại có DOM vì JS chạy trong WEB API mà trong đó nó có 
+//DOM
+ 
+//DOCUMENT
+document.write('HELLO GUYS!!!')
