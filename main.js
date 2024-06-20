@@ -40,6 +40,7 @@ console.log(languages.charAt(5));
  */
 
 /*
+
 Số và làm việc với kiểu số trong JavaScript
 
  var age = 18;
@@ -679,7 +680,6 @@ Array.prototype.map2 = function(callback) {
 
 
 
-
 // //muốn gọi lại được thì phải truyền map2 function
 // //output cuối cùng là biến htmls
 // var htmls = courses.map2(function(course,index) {
@@ -713,7 +713,6 @@ Array.prototype.forEach2 = function(callback2){
    }
 
 };
-
 
 
 courses.forEach2(function(course,index,originArray){
@@ -967,7 +966,7 @@ function removeDuplicates(arr, i = 0, result = []) {
 */
 //Node: điểm giao nhau, giống như những cục gồ lên của đậu que
 
-//----------------------------------------------
+//----------------------------------------------------------------------
 
 //JavaScript: chỉ là phương tiện để truy xuất vào mô hình DOM (HTML DOM không phải là của JavaScript)
 //JS có thể chạy: Browser(trình duyệt) | Server (NodeJS)
@@ -975,6 +974,56 @@ function removeDuplicates(arr, i = 0, result = []) {
 //Browser: HTML -> DOM -> WEB API (DOM API): chạy trên WEB thôi
 //Tại sao JS chạy Browser lại có DOM vì JS chạy trong WEB API mà trong đó nó có 
 //DOM
- 
-//DOCUMENT
-document.write('HELLO GUYS!!!')
+
+//DOCUMENT: là đại diên cho cả website 
+
+document.write('Hello guys');
+//ID
+var headingNode = document.getElementById('heading')//element
+console.log(headingNode)
+
+var headingNode = document.getElementById('headingzzz')//element
+console.log(headingNode) // element sai se tr ve NULL
+
+ console.log({
+   element: headingNode
+ });
+
+ // ClassName();
+ var headingNodes = document.getElementsByClassName('heading')
+ console.log(headingNodes) // return về một mảng
+ // TagName();
+ var headingNodess = document.getElementsByTagName('h1') // tên thẻ
+ console.log(headingNodess) //return về một mảng chứa các thẻ h1
+
+ // CSS selector
+var headingNode2 = document.querySelector('.heading-2');
+console.log(headingNode2) // return truc tiep ve element
+
+console.log(document.querySelector('.box .heading-2'))
+//trỏ từ thằng lớn nhất trỏ vào
+
+/// Cách 1
+var listItemNodes = document.querySelector('.box-1 li');
+console.log(listItemNodes) // select vào thằng đầu tiên
+
+var listItemNodes = document.querySelectorAll('.box-1 li');
+console.log(listItemNodes) // select vào tất cả các thằng
+
+/// Cách 2: Select từ thằng lớn nhất vào thằng nhỏ nhất
+
+var boxNode = document.querySelector('.box-1');
+console.log(boxNode); // Lớn nhất
+
+console.log(boxNode.querySelector('li')); // (đầu tiên)Bên trong lớn nhất
+console.log(boxNode.querySelectorAll('li')); // (All) bên trong nhỏ nhất
+
+
+//html colection: Thao tác giống mảng. nó sẽ lấy các
+// element của mảng
+console.log(document.forms) //mình có thể trỏ thẳng vào êlement
+//mà không cần select qua thằng getElementById
+console.log(document.forms[0]);
+console.log(document.forms.textForm);
+console.log(document.anchors); // return về all thẻ a.
+//có thuộc tính là name
