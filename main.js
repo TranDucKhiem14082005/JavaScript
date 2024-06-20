@@ -977,6 +977,8 @@ function removeDuplicates(arr, i = 0, result = []) {
 
 //DOCUMENT: là đại diên cho cả website 
 
+/*
+//// Element
 document.write('Hello guys');
 //ID
 var headingNode = document.getElementById('heading')//element
@@ -1027,3 +1029,36 @@ console.log(document.forms[0]);
 console.log(document.forms.textForm);
 console.log(document.anchors); // return về all thẻ a.
 //có thuộc tính là name
+
+*/
+
+///Attribute
+
+var headingElement = 
+   document.querySelector('h1');
+
+console.log(headingElement);
+
+///Thêm Attribute vào element
+//Cách 1: 
+headingElement.title = 'Heading'; 
+console.log(headingElement);
+headingElement.id = 'Heading'; 
+console.log(headingElement);
+headingElement.className = 'Khiem'; //className => class
+console.log(headingElement);
+//Cách 2:
+headingElement.setAttribute('data','heading');
+//Trong đó data là tên attribute mà mình muốn thêm
+//heading là giá trị của attribute mà mình muốn thêm
+
+
+///Lấy giá trị của attribute từ một element.
+console.log(headingElement.getAttribute('title'));
+console.log(headingElement.getAttribute('id'));
+console.log(headingElement.getAttribute('data'));
+console.log(headingElement.getAttribute('class')); 
+//Khi lấy một giá tri của attribute của className (class)
+//thì phải ghi tên attribute là "class".
+
+
