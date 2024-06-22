@@ -1031,7 +1031,7 @@ console.log(document.anchors); // return về all thẻ a.
 //có thuộc tính là name
 
 */
-
+/*
 ///Attribute
 
 var headingElement = 
@@ -1060,5 +1060,71 @@ console.log(headingElement.getAttribute('data'));
 console.log(headingElement.getAttribute('class')); 
 //Khi lấy một giá tri của attribute của className (class)
 //thì phải ghi tên attribute là "class".
+*/
 
 
+///InnerText and textContent
+
+// var headingElement =
+//    document.querySelector('.heading');
+// //xem noi dung : geter
+// console.log(headingElement.innerText)
+
+// console.log(headingElement.textContent)
+
+// //them/sua noi dung : seter
+
+// headingElement.innerText = 'New heading'
+// console.log(headingElement.innerText)
+// console.log(headingElement.textContent)
+
+// headingElement.innerText = '<i>New Heading</i>'
+
+
+// headingElement.innerText = `
+
+// New Heading
+
+// ` // Khi mà đổi sang `` thì mỗi lần xuống hàng thì nó sẽ đổi 
+// //thành một thẻ <br>
+// console.log(headingElement.innerText)
+
+// headingElement.textContent = `
+
+// New Heading
+
+// `
+// console.log(headingElement.textContent)
+
+
+///**Thêm element vào trong element
+
+//innerHTML, outerHTML
+
+//innerHTML: có thể thêm được element node, attribute node, text node vào trong một
+//element
+var boxElement = document.querySelector('.box')
+
+boxElement.innerHTML = '<h1 title ="Heaing">New Heading</h1>' //seter
+ 
+console.log(document.querySelector('h1').innerText)//geter
+
+console.log(boxElement.innerHTML); //khi chúng ta sử dụng geter
+//thì nó sẽ lấy nội dung trong element của chúng ta ra.
+//Trong trường hợp này nó lấy luôn cả thẻ h1 và attribute title ra 
+//nó lấy luôn của text node. Nó quy thành một chuỗi
+
+///outerHTML
+
+//geter
+
+console.log(boxElement.outerHTML) // nó sẽ lấy luôn thằng element
+//khi gọi đến thuộc tính outerHTML 
+
+//seter
+boxElement.outerHTML = '<span>Test</span>' //nó sẽ ghi đề lền
+// luôn thằng class box
+
+console.log(boxElement) // nó vẫn còn trong bộ nhớ nhugnw trong DOM không
+//con nữa => không get ra được nội dung của nó được bởi vì no không còn
+//nó chỉ lấy nội dung ra từ bộ nhớ mà thôi. 
