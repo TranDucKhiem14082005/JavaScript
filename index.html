@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        ul{
+            display: none;
+        }
+
+        input:focus~ul{
+            display: block;
+        }
+    </style>
 </head>
     <body>
             <!-- <div class="heading"></div>
@@ -76,8 +85,32 @@
                 <option value="value3">3</option>
             </select>
              -->
-            <input type="text">
-            <script src="main.js"></script>
-        
+
+            <!-- <input type="text">
+           
+             -->
+
+             
+             <a href="https://f8.edu.vn">
+                Học lập trình
+             </a>
+
+             <br />
+
+             <a href="https://google.com.vn">
+                Tìm kiếm
+             </a>
+
+             <input placeholder = "Tìm kiếm" />
+             <ul>
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>Golang</li>
+             </ul>
+             <div>
+                DIV
+                <button>Click me!</button>
+             </div>
+             <script src="main.js"></script>
     </body>
 </html>
