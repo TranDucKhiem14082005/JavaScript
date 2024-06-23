@@ -1096,7 +1096,7 @@ console.log(headingElement.getAttribute('class'));
 // `
 // console.log(headingElement.textContent)
 
-
+/*
 ///**Thêm element vào trong element
 
 //innerHTML, outerHTML
@@ -1127,4 +1127,122 @@ boxElement.outerHTML = '<span>Test</span>' //nó sẽ ghi đề lền
 
 console.log(boxElement) // nó vẫn còn trong bộ nhớ nhugnw trong DOM không
 //con nữa => không get ra được nội dung của nó được bởi vì no không còn
-//nó chỉ lấy nội dung ra từ bộ nhớ mà thôi. 
+//nó chỉ lấy nội dung ra từ bộ nhớ mà thôi.
+*/
+
+/*
+///DOM STLYE
+
+var boxElement = 
+   document.querySelector('.box');
+
+console.log(boxElement);
+boxElement.style.width = '100px';
+boxElement.style.height = '200px';
+boxElement.style.backgroundColor = 'red';
+boxElement.style.margin = '100px'
+
+console.log(boxElement.style.width) // lay ra thuoc tinh CSS inline.
+//Khong phai lay ra mot doi tuong
+
+//cach viet nhieu style ma khong can phai ghi nhieu dong
+//boxElement.style la` mot Object
+Object.assign(boxElement.style, { //muc dich chính của cách này
+   // sinh ra không phải để CSS mà nó chỉ hỗ trợ trong quá trình mình
+   //làm thì mình sẽ thêm những cái mình cần vào thôi
+   width: '200px',
+   height: '400px',
+   // backgroundColor: 'blue',
+});
+
+console.log(boxElement.style);
+
+*/
+
+/*
+//CLASSLIST PROPERTY
+
+var boxElement = document.querySelector('.box');
+
+console.log(boxElement);
+
+console.log(boxElement.classList.add('box-2'));
+// console.log(boxElement.classList.length); dung de ktr do dai
+
+console.log(boxElement.classList.add('red'));
+console.log(boxElement)
+console.log(boxElement.classList.contains('red'));
+// console.log(boxElement.classList.remove('red'));
+
+// setTimeout(() => {
+// console.log(boxElement.classList.remove('red'));
+
+// },3000);
+
+setInterval(() => {
+   console.log(boxElement.classList.toggle('red'));
+
+},1000);
+*/
+
+
+//DOM events
+
+// var h1Element = 
+//    document.querySelector('h1')
+
+// h1Element.onclick = function() {
+//    console.log(Math.random());
+// }
+
+// var h1Elements = 
+//    document.querySelectorAll('h1');
+// for(var i = 0; i<h1Elements.length;i++){
+//    h1Elements[i].onclick = function(e) {
+//       console.log(e.target)
+//    }
+// }
+
+
+//1.Input / select
+// var inputElement = 
+//    document.querySelector('input[type = "text"]');
+
+// inputElement.onchange = function(e) {
+//    console.log(e.target.value)
+// }
+// inputElement.oninput = function(e) {
+//    console.log(e.target.value)
+// }
+
+
+// var inputElement1 = 
+//    document.querySelector('input[type = "checkbox"]');
+// inputElement1.onchange = function(e){
+//    console.log(e.target.checked)
+// } 
+
+
+// var inputElement2 = 
+//    document.querySelector( 'select');
+// inputElement2.onchange = function(e){
+//    console.log(e.target.value); //nó trả về value của attribute
+// }
+
+//2. Key up / down
+
+var inputElement = 
+   document.querySelector('input[type = "text"]')
+
+
+inputElement.onkeyup = function(e){ // dang xet trong element
+   console.log(e.which);
+}
+
+document.onkeyup = function(e) { // trên toàn DOM
+   console.log(e.which);
+}
+
+document.onkeydown = function(e) {
+   console.log(e.which)
+}
