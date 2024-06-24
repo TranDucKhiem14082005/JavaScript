@@ -68,13 +68,17 @@
             rules: [
                 //nhận lại dữ liệu của 2 cái này return lại
                 Validator.isRequired('#fullname','Vui lòng nhập tên đầy đủ của bạn'),
+                Validator.isRequired('#email'),
                 Validator.isEmail('#email','Vui lòng nhập email của bạn'),
                 Validator.minLength('#password',6,'Vui lòng nhập mật khẩu của bạn'),
                 Validator.isRequired('#password_confirmation'),
                 Validator.isConfirmed('#password_confirmation',function () {
                     return document.querySelector('#form-1 #password').value;
                 },'Mật khẩu nhập lại không chính xác'),
-            ]
+            ],
+            onSubmit: function (data) {
+                console.log(data);
+            }
         });
 
     </script>
