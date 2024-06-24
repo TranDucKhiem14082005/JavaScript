@@ -963,7 +963,7 @@ function removeDuplicates(arr, i = 0, result = []) {
 
 // chúng ta có thể sd JavaScript để truy cập vào 3 thành phần trên và
 //làm thay đổi giao diện của web
-*/
+
 //Node: điểm giao nhau, giống như những cục gồ lên của đậu que
 
 //----------------------------------------------------------------------
@@ -977,10 +977,9 @@ function removeDuplicates(arr, i = 0, result = []) {
 
 //DOCUMENT: là đại diên cho cả website 
 
-/*
 //// Element
-document.write('Hello guys');
-//ID
+// document.write('Hello guys');
+// //ID
 var headingNode = document.getElementById('heading')//element
 console.log(headingNode)
 
@@ -1030,9 +1029,9 @@ console.log(document.forms.textForm);
 console.log(document.anchors); // return về all thẻ a.
 //có thuộc tính là name
 
-*/
-/*
-///Attribute
+
+
+// ///Attribute
 
 var headingElement = 
    document.querySelector('h1');
@@ -1060,43 +1059,43 @@ console.log(headingElement.getAttribute('data'));
 console.log(headingElement.getAttribute('class')); 
 //Khi lấy một giá tri của attribute của className (class)
 //thì phải ghi tên attribute là "class".
-*/
+
 
 
 ///InnerText and textContent
 
-// var headingElement =
-//    document.querySelector('.heading');
-// //xem noi dung : geter
-// console.log(headingElement.innerText)
+var headingElement =
+   document.querySelector('.heading');
+//xem noi dung : geter
+console.log(headingElement.innerText)
 
-// console.log(headingElement.textContent)
+console.log(headingElement.textContent)
 
-// //them/sua noi dung : seter
+//them/sua noi dung : seter
 
-// headingElement.innerText = 'New heading'
-// console.log(headingElement.innerText)
-// console.log(headingElement.textContent)
+headingElement.innerText = 'New heading'
+console.log(headingElement.innerText)
+console.log(headingElement.textContent)
 
-// headingElement.innerText = '<i>New Heading</i>'
+headingElement.innerText = '<i>New Heading</i>'
 
 
-// headingElement.innerText = `
+headingElement.innerText = `
 
-// New Heading
+New Heading
 
-// ` // Khi mà đổi sang `` thì mỗi lần xuống hàng thì nó sẽ đổi 
-// //thành một thẻ <br>
-// console.log(headingElement.innerText)
+` // Khi mà đổi sang `` thì mỗi lần xuống hàng thì nó sẽ đổi 
+//thành một thẻ <br>
+console.log(headingElement.innerText)
 
-// headingElement.textContent = `
+headingElement.textContent = `
 
-// New Heading
+New Heading
 
-// `
-// console.log(headingElement.textContent)
+`
+console.log(headingElement.textContent)
 
-/*
+
 ///**Thêm element vào trong element
 
 //innerHTML, outerHTML
@@ -1128,10 +1127,10 @@ boxElement.outerHTML = '<span>Test</span>' //nó sẽ ghi đề lền
 console.log(boxElement) // nó vẫn còn trong bộ nhớ nhugnw trong DOM không
 //con nữa => không get ra được nội dung của nó được bởi vì no không còn
 //nó chỉ lấy nội dung ra từ bộ nhớ mà thôi.
-*/
 
-/*
-///DOM STLYE
+
+// /*
+// ///DOM STLYE
 
 var boxElement = 
    document.querySelector('.box');
@@ -1157,9 +1156,9 @@ Object.assign(boxElement.style, { //muc dich chính của cách này
 
 console.log(boxElement.style);
 
-*/
 
-/*
+
+
 //CLASSLIST PROPERTY
 
 var boxElement = document.querySelector('.box');
@@ -1183,74 +1182,74 @@ setInterval(() => {
    console.log(boxElement.classList.toggle('red'));
 
 },1000);
-*/
+
 
 
 //DOM events
 
-// var h1Element = 
-//    document.querySelector('h1')
+var h1Element = 
+   document.querySelector('h1')
 
-// h1Element.onclick = function() {
-//    console.log(Math.random());
-// }
+h1Element.onclick = function() {
+   console.log(Math.random());
+}
 
-// var h1Elements = 
-//    document.querySelectorAll('h1');
-// for(var i = 0; i<h1Elements.length;i++){
-//    h1Elements[i].onclick = function(e) {
-//       console.log(e.target)
-//    }
-// }
+var h1Elements = 
+   document.querySelectorAll('h1');
+for(var i = 0; i<h1Elements.length;i++){
+   h1Elements[i].onclick = function(e) {
+      console.log(e.target)
+   }
+}
 
 
 //1.Input / select
-// var inputElement = 
-//    document.querySelector('input[type = "text"]');
+var inputElement = 
+   document.querySelector('input[type = "text"]');
 
-// inputElement.onchange = function(e) {
-//    console.log(e.target.value)
-// }
-// inputElement.oninput = function(e) {
-//    console.log(e.target.value)
-// }
-
-
-// var inputElement1 = 
-//    document.querySelector('input[type = "checkbox"]');
-// inputElement1.onchange = function(e){
-//    console.log(e.target.checked)
-// } 
+inputElement.onchange = function(e) {
+   console.log(e.target.value)
+}
+inputElement.oninput = function(e) {
+   console.log(e.target.value)
+}
 
 
-// var inputElement2 = 
-//    document.querySelector( 'select');
-// inputElement2.onchange = function(e){
-//    console.log(e.target.value); //nó trả về value của attribute
-// }
+var inputElement1 = 
+   document.querySelector('input[type = "checkbox"]');
+inputElement1.onchange = function(e){
+   console.log(e.target.checked)
+} 
+
+
+var inputElement2 = 
+   document.querySelector( 'select');
+inputElement2.onchange = function(e){
+   console.log(e.target.value); //nó trả về value của attribute
+}
 
 //2. Key up / down
 
-// var inputElement = 
-//    document.querySelector('input[type = "text"]')
+var inputElement = 
+   document.querySelector('input[type = "text"]')
 
 
-// inputElement.onkeyup = function(e){ // dang xet trong element
-//    console.log(e.which);
-// }
+inputElement.onkeyup = function(e){ // dang xet trong element
+   console.log(e.which);
+}
 
-// document.onkeyup = function(e) { // trên toàn DOM
-//    console.log(e.which);
-// }
+document.onkeyup = function(e) { // trên toàn DOM
+   console.log(e.which);
+}
 
-// document.onkeydown = function(e) {
-//    console.log(e.which)
-// }
+document.onkeydown = function(e) {
+   console.log(e.which)
+}
 
 
 //PrevenDefault and StopPropagation
 
-//PrevenDefaulto
+///PrevenDefaulto
 
 var aElements = document.links;
 
@@ -1262,9 +1261,11 @@ for(var i = 0;i<aElements.length;++i){
    }                 
 } 
 
+console.log(aElements)
+
 
 var ulElement = document.querySelector('ul');
-
+console.log(ulElement)  
 ulElement.onmousedown = function(e) {
    e.preventDefault();
 }
@@ -1281,4 +1282,77 @@ document.querySelector('button').onclick =
    function(e) {
       e.stopPropagation();
       console.log('Click me!');
-   }
+ }
+
+ */
+
+
+//1. Xử lý nhiều việc khi có 1 event xảy ra
+//2. Lắng nghe / Hủy bỏ lắng nghe
+//DOM event / Event listener
+
+ var btn = document.getElementById('btn');
+ console.log(btn);
+
+ //DOM event (1)
+
+//  btn.onclick = function() {
+//    console.log('Viec 1');
+//    console.log('Viec 2');
+//    alert('Viec 3');
+//  }
+
+// //DOM event (2)
+//sử dụng nó trong những trường hợp đơn giản và chúng ta không
+//nhu cầu gỡ bỏ nó đi
+
+// setTimeout(function(){ //Lắng nghe
+//    console.log('Viec 1');
+//    console.log('Viec 2');
+//    alert('Viec 3');
+// },3000)
+
+
+//Hủy bỏ lắng nghe bằng cách ghi đè
+// console.log('Viec 1');
+// console.log('Viec 2');
+// alert('Viec 3');
+// setTimeout(function(){
+//    btn.onclick = function() {}
+// },3000)
+
+
+//Event Listener
+
+//Làm thế nào để lắng nghe một sự kiện khi sử dụng event listener
+// btn.addEventListener('click',function(e){
+//    console.log(Math.random())
+// });
+
+//Làm nhiều việc bằng cách là chúng ta sẽ tạo ra nhiều
+//function để cho các việc chạy cùng một lúc.
+//Nhược điểm: code dài
+//Ưu điểm: Nhìm dễ hiểu, biết function nào làm việc nào,
+//và khi làm thì cần làm việc nào trước việc nào sau theo ý mình
+btn.addEventListener('click',function(e){
+   console.log('Event 1')
+});btn.addEventListener('click',function(e){
+   console.log('Event 2')
+});btn.addEventListener('click',function(e){
+   console.log('Event 3')
+});
+
+function viec1 () {
+   console.log('Việc 1');
+}
+
+btn.addEventListener('click',viec1);
+
+//Hủy bỏ lắng nghe: romoveListener
+setTimeout(function() { // khi hủy bỏ lắng nghe thì
+   //chúng ta có thể hủy bỏ lắng nghe một cái sự kiện
+   //cụ thể nào đó mà chúng ta muốn
+   //DOM event rất khó để làm việc nào
+
+   btn.removeEventListener('click',viec1)
+},3000)
