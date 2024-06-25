@@ -32,15 +32,45 @@
                 <span class="form-message"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group ">
                 <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
                 <input id = "password_confirmation" name = "password_confirmation"  type="password" placeholder="Nhập lại mật khẩu" class = "form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group ">
+                <label for="avatar" class="form-label">Ảnh đại diện</label>
+                <input id = "avatar" name = "avatar"  type="file"  class = "form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group ">
+                <label for="province" class="form-label">Tỉnh/TP</label>
+                <select id = "province" name = "province"  type="password"  class = "form-control">
+                    <option value="">-- Chọn Tỉnh/TP --</option>
+                    <option value="NT">-- Nha Trang --</option>
+                    <option value="HCM">-- Hồ Chí Minh --</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password_confirmation" class="form-label">Giới tính</label>
+                <div>
+                    <input  name = "gender"  type="radio" value ="male" class = "form-control">
+                    Nam
+                </div>
+                <div>
+                    <input  name = "gender"  type="radio" value ="female" class = "form-control">
+                    Nữ
+                </div>
+                <div>
+                    <input  name = "gender"  type="radio" value ="orther" class = "form-control">
+                    Khác
+                </div>
                 <span class="form-message"></span>
             </div>
             <button class="form-submit">Đăng ký</button>
         </form>
 
-        <!-- <form action="" method="POST" class="form" id="form-2">
+        <form action="" method="POST" class="form" id="form-2">
             <h3 class="heading">Đăng nhập</h3>
             <p class="desc">Học tập cùng nhau</p>
 
@@ -57,24 +87,44 @@
                 <span class="form-message"></span>
             </div>
             <button class="form-submit">Đăng nhập</button>
-        </form> -->
+        </form>
     </div>
     <script src="validator.js"></script>
     <script>
         // Mong muốn của chúng ta
         Validator({
             form: '#form-1',
+            formGroupSelector: '.form-group',
             errorSelector: '.form-message',
             rules: [
                 //nhận lại dữ liệu của 2 cái này return lại
                 Validator.isRequired('#fullname','Vui lòng nhập tên đầy đủ của bạn'),
                 Validator.isRequired('#email'),
+                Validator.isRequired('#avatar'),
                 Validator.isEmail('#email','Vui lòng nhập email của bạn'),
                 Validator.minLength('#password',6,'Vui lòng nhập mật khẩu của bạn'),
                 Validator.isRequired('#password_confirmation'),
+                Validator.isRequired('input[name = "gender"]'),
+                Validator.isRequired('#province'),
                 Validator.isConfirmed('#password_confirmation',function () {
                     return document.querySelector('#form-1 #password').value;
                 },'Mật khẩu nhập lại không chính xác'),
+            ],
+            onSubmit: function (data) {
+                console.log(data);
+            }
+        });
+
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                //nhận lại dữ liệu của 2 cái này return lại
+                
+                Validator.isEmail('#email','Vui lòng nhập email của bạn'),
+                Validator.minLength('#password',6,'Vui lòng nhập mật khẩu của bạn'),
+               
             ],
             onSubmit: function (data) {
                 console.log(data);
