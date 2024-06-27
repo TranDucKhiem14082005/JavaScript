@@ -31,13 +31,13 @@ function Validator(formSelector){
         },
         max: function (max) {
             return function (value) {
-                return value.length >= max ? undefined : `Vui lòng nhập ít nhất ${max} kí tự`;
+                return value.length <= max ? undefined : `Vui lòng nhập tối đa ${max} kí tự`;
             }
         },
     }
 
 
-    //Lấy ra form element trong DOM theo `formElement`
+    //Lấy ra form element trong DOM theo `formSelector`
     var formElement = document.querySelector(formSelector);
     //Chỉ xử lý khi có element trong DOM
     if(formElement) {
@@ -88,7 +88,7 @@ function Validator(formSelector){
 
             //neu co loi thi hien thi message loi ra UI
             if(errorMessage) {
-                var formGroup = getParent(event.target,".form-group")
+                var formGroup = getParent(event.target,'.form-group')
                 if(formGroup) {
                     formGroup.classList.add('invalid');
                     var formMessage = formGroup.querySelector('.form-message');
@@ -120,7 +120,7 @@ function Validator(formSelector){
     //xu ly hanh vi submit form
     formElement.onsubmit = function(event) {
         event.preventDefault();
-        console.log(this);
+        console.log(_this);
         //this keyword   
 
         var inputs = formElement.querySelectorAll('[name][rules]');
@@ -144,30 +144,30 @@ function Validator(formSelector){
 
                 var enableInputs = formElement.querySelectorAll('[name]');
 
-                    var formValues = Array.from(enableInputs).reduce(function (values,input) {
+                   var formValues = Array.from(enableInputs).reduce(function (values,input) {
                         
-                        switch(input.type) {
-                            case 'radio':
-                                values[input.name] = formElement.querySelector('input[name ="' + input.name + '"]:checked').value
-                                break;
-                            case 'checkbox':
-                                if(!input.matches(':checked')){
-                                    values[input.name] = '';
-                                    return values;
-                                }
-                                if(!Array.isArray(values[input.name])) {
-                                    values[input.name] = [];
-                                }
-                                values[input.name].push(input.value);
-                                break;
-                            case 'file':
-                                values[input.name] = input.files;
-                                break;
-                            default:
-                                values[input.name] = input.value;
-                        }
+                    switch(input.type) {
+                        case 'radio':
+                            values[input.name] = formElement.querySelector('input[name ="' + input.name + '"]:checked').value
+                             break;
+                        case 'checkbox':
+                            if(!input.matches(':checked')){
+                                values[input.name] = '';
+                                return values;
+                            }
+                            if(!Array.isArray(values[input.name])) {
+                                values[input.name] = [];
+                            }
+                            values[input.name].push(input.value);
+                            break;
+                        case 'file':
+                            values[input.name] = input.files;
+                            break;
+                        default:
+                            values[input.name] = input.value;
+                    }
 
-                        return values;
+                    return values;
                     },{});
 
 
