@@ -1291,8 +1291,8 @@ document.querySelector('button').onclick =
 //2. Lắng nghe / Hủy bỏ lắng nghe
 //DOM event / Event listener
 
- var btn = document.getElementById('btn');
- console.log(btn);
+//  var btn = document.getElementById('btn');
+//  console.log(btn);
 
  //DOM event (1)
 
@@ -1334,25 +1334,112 @@ document.querySelector('button').onclick =
 //Nhược điểm: code dài
 //Ưu điểm: Nhìm dễ hiểu, biết function nào làm việc nào,
 //và khi làm thì cần làm việc nào trước việc nào sau theo ý mình
-btn.addEventListener('click',function(e){
-   console.log('Event 1')
-});btn.addEventListener('click',function(e){
-   console.log('Event 2')
-});btn.addEventListener('click',function(e){
-   console.log('Event 3')
-});
+// btn.addEventListener('click',function(e){
+//    console.log('Event 1')
+// });btn.addEventListener('click',function(e){
+//    console.log('Event 2')a
+// });btn.addEventListener('click',function(e){
+//    console.log('Event 3')
+// });
 
-function viec1 () {
-   console.log('Việc 1');
-}
+// function viec1 () {
+//    console.log('Việc 1');
+// }
 
-btn.addEventListener('click',viec1);
+// btn.addEventListener('click',viec1);
 
-//Hủy bỏ lắng nghe: romoveListener
-setTimeout(function() { // khi hủy bỏ lắng nghe thì
-   //chúng ta có thể hủy bỏ lắng nghe một cái sự kiện
-   //cụ thể nào đó mà chúng ta muốn
-   //DOM event rất khó để làm việc nào
+// //Hủy bỏ lắng nghe: romoveListener
+// setTimeout(function() { // khi hủy bỏ lắng nghe thì
+//    //chúng ta có thể hủy bỏ lắng nghe một cái sự kiện
+//    //cụ thể nào đó mà chúng ta muốn
+//    //DOM event rất khó để làm việc nào
 
-   btn.removeEventListener('click',viec1)
-},3000)
+//    btn.removeEventListener('click',viec1)
+// },3000)
+
+
+//JSON
+///1. Là một định dạng dữ liệu (chuỗi)
+//2. JavaScript Object Notation
+//3. JSON: Number,String,Boolean,Null, Array,Object
+// var json = '["JavaScipt","PHP"]';
+// var json = '{"name":"Khiem Tran","age":18}';
+// var a ='{}'; // doi voi chuoi thi chung ta se bo vao trong dau ""
+// console.log(JSON.parse(a))
+
+
+// var object = JSON.parse(json);
+
+// console.log(object)
+
+
+// console.log(JSON.stringify(null)); // la mot chuoi string
+// console.log(JSON.stringify([
+//    'JavaScipt',
+//    'PHP'
+// ]));
+
+// console.log(JSON.stringify({
+//    name: 'Khiem Tran',
+//    age: 18,
+// }));
+
+
+
+//Promise có 3 trạng thái.
+//1. Pendding: chờ thành công/thất bại (rò rỉ bộ nhớ)
+//2. Fulilled: Thanh công => sau đó lọt vào finally
+//3. Rejected: lọt và0 failture
+
+//promise: là một khái niệm  sinh ra để xử lý thao tác bất đồng
+//bộ, trước khi có promise thì người ta sử dụng callback hell, mà khi sử dụng
+//callback thì code nó sẽ đi sâu vào và rất là khó nhìn, rối, khó hiểu
+//promise dudocj sinh ra trong phiên bản mới hơn (ES6) sử dụng
+//nó tình trạng callback hell, để thấy code dễ nhìn hơn, dễ hiểu hơn.
+// và để tạo ra một promise thì sd từ khóa new với thằng Promise và trong
+//controctor của nó mình sẽ truyền vào excutor function() trong đó mình sẽ
+//nhận được hai tham số dạng hàm (1: resole: khi thao tác xử lí thành công
+//, 2: reject, dùng reject khi thao tác xử lý thất bại)
+//khi sử dụng promise thì đối tượng promise đc tạo ra chúng tá
+//sử dụng các phương thức then(nhận callback function và được 
+//thực thi khi promise gọi resolve)  hoặc catch(được gọi khi promise
+//gọi reject)
+// var promise = new Promise (
+//    function (resolve,reject) {
+
+//       //fake call api
+//       //reject: trả về một mã lỗi massage lỗi
+//       resolve([
+//          {
+//             id: 1,
+//             name: 'JavaScript'
+//          }
+//       ]);
+//    }
+// ) 
+
+// promise
+//    .then(function(courses){ 
+//       console.log(courses);
+//    })
+
+//    .catch(function(){ 
+//       console.log('Failure!');
+//    })
+
+//    .finally(function(){ 
+//       console.log('Done!');
+//    })
+var promise = new Promise(function (resole,reject) {
+   // resole('YES');
+   reject('ERR')
+})
+
+promise
+   .then(function (result) {
+      console.log('result:' ,result)
+   })
+
+   .catch(function (value) {
+      console.log('value: ', value)
+   })
