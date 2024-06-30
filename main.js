@@ -1429,17 +1429,319 @@ document.querySelector('button').onclick =
 
 //    .finally(function(){ 
 //       console.log('Done!');
+//   })
+// var promise = new Promise(function (resole,reject) {
+//    //LOGIC
+//    // resole('YES');
+//    reject('ERR')
+// })
+
+// promise
+//    .then(function (result) {
+//       console.log('result:' ,result)
 //    })
-var promise = new Promise(function (resole,reject) {
-   // resole('YES');
-   reject('ERR')
-})
 
-promise
-   .then(function (result) {
-      console.log('result:' ,result)
-   })
+//    .catch(function (value) {
+//       console.log('value: ', value)
+//    })
 
-   .catch(function (value) {
-      console.log('value: ', value)
-   })
+
+   ///CHAIN
+//Nếu không return ra một promise thì nó sẽ chạy ngay thằng then ở
+//chuỗi liền kế phía sau nó.
+//Nếu return ra 1 new promise thì nó phải chờ thằng promise mới
+//tạo ra chạy xong thì thằng then phía sau liên kề nó mới được chạy.
+//.then phía sau liền kế một then trược (mà then dó return về một new promise)
+//thì nó(then phía sau) sẽ được nhận cái value mà cái then phía trước return về
+//và ở đây là cái new promise
+
+//Bài toán in ra từ 1 đến 3 mã mỗi lần in phải đợi 1s
+// function sleep(ms) {
+//    return new Promise(function (resole) {
+//       setTimeout(resole,ms);
+//    });
+// }
+
+// sleep(1000)
+//    .then(function() {
+//       console.log(1);
+//       return sleep(1000);
+//    })
+//    .then(function() {
+//       console.log(2);
+//       return sleep(1000);
+//    })
+//    .then(function() {
+//       console.log(3);
+//       return sleep(1000);
+//    })
+
+//Promise methods (resole, reject, all)
+//Nếu đang trong quá trình chạy mà có một công việc return về
+//một new promise và reject ở new promise đó thì 
+//nó sẽ dừng ngay tại công việc đó và sau đó thì nó sẽ lọt vào thằng
+//.catch
+
+//Example
+
+// function sleep(ms) {
+//    return new Promise(function (resole) {
+//       setTimeout(resole,ms);
+//    });
+// }
+
+// sleep(1000)
+//    .then(function() {
+//       console.log(1);
+//       return sleep(1000);
+//    })
+//    .then(function() {
+//       console.log(2);
+//       return new Promise (function(resolve,reject) {
+//          reject('Đã xảy ra lôi!');
+//       })
+      
+//    })
+//    .then(function() {
+//       console.log(3);
+//       return sleep(1000);
+//    })
+//    .catch(function(err) {
+//       console.log(err)
+//    })
+
+
+//1. Promise.resole
+//2. Promise.reject
+//3. Promise.all=> giúp chạy song song các promise
+//Nếu có một promise bị lỗi thì Promise.all sẽ không care nữa
+//nó sẽ báo lỗi luôn và nó sẽ lọt vào .catch
+
+// var promise = new Promise( function (resolve,reject) {
+//    resolve('Success!');
+//    reject('err')
+// });
+
+// promise
+//    .then(function(result) {
+//       console.log('result: ',result)
+//    })
+//    /catch(function(err) {
+//    console.log('err: ', err)
+//    })
+
+//Cach ngan hon
+
+// var promise = Promise.resolve('Hello');
+// var promise = Promise.reject('hi');
+
+//Có một vài thư viện: output luôn luôn là một promise 
+
+// promise
+//    .then(function(result) {
+//       console.log('result: ',result)
+//    })
+//    .catch(function(err){
+//       console.log('err: ',err)
+//    })
+
+
+// //Promise.all
+
+// var promise1 = new Promise(function(resolve) {
+//    setTimeout(function(){
+//       resolve([1]);
+//    },1000);
+// })
+// var promise2 = new Promise(function(resolve) {
+//    setTimeout(function(){
+//       resolve([2,3]);
+//    },1000);
+// })
+
+// var promise3 = Promise.reject('Loi');
+
+// Promise.all([promise1,promise2,promise3])
+//    .then(function([result1,result2,result3]){
+//          console.log(result1.concat(result2).concat(result3))
+//    } )
+//    .catch(function(err){ // Nếu mà có mooth thằng sai
+//       //thì cả bài sẽ sai luôn
+//       console.log(err)
+//    })
+
+
+//ES6
+//1. Let,const:
+   //1.1. Var/Let,Const: Scope,Hosting
+   //1.2. Const/ Var,Let: Assignment
+
+   //Cái này được dùng trong CODE BLOCK:
+   //if else, loop, {},... (Let,Const)
+
+   //Code thuần: Var
+   //Babel: Const,Let
+   //-Khi định nghĩa biến và không gán lại biến đó: Const
+   //- Khi cần gán lại gái trị cho biến: Let
+   //Vd về Let
+   // let isSuccess = false;
+   // if(...){
+   //    isSuccess = true;
+   // }
+
+//2. Arrow Function: hàm mũi tene => không thể sd nó làm function contructor được
+//Nếu Arrow function chỉ có một tham số thì chúng ta có thể
+//bỏ ngoặc của tham số đó. VD (log) => ... -> log =>....
+   // function logger(log){
+   //    console.log(log);
+   // }
+
+   // logger('Message')
+
+   // //vd
+   // const sum = (a,b) => ({a:a,b:b}) 
+   //nó sau dấu => không có dấu {} thì nó sẽ return ra luôn 
+   //cái câu lệnh đó vd: => a+b.
+   //Còn nếu có {} thì nó sẽ hiểu ở trong đây là một block code
+   //nó sẽ đợi return ở trong block code đó
+   //nếu muốn nó lấy luôn dấu {} thì phải thêm () vào để nhóm nó.
+
+   //Đặc tính:
+   // const courses = {
+   //    name: 'Javascript basic',
+   //    getName: () => {
+   //       return this; 
+   //    }
+   // }
+
+   // console.log(courses.getName());
+
+
+//Template Literals: là viết trong dấu `...${}`
+//Multi-line: viết nhiều dòng.
+
+//Classes: Cách viết khác của contructor function
+
+   //Cách viết function bình thường constructor function
+      // function Course(name,price){
+      //    this.name = name;
+      //    this.price = price;
+            // this.getName = function() {
+            //    return this.name;
+            // }
+      // }
+      // const phpCourse = new Course('PHP',100);
+      // const javascriptCourse = new Course('JavaScript',100);
+      // console.log(phpCourse);
+      // console.log(javascriptCourse);
+
+   //Cách viết theo kiểu Classes
+
+   // class Course {
+      //    constructor(name,price){
+      //       this.name = name;
+      //       this.price = price;
+      //    }
+      //    getName() {
+      //       return this.name;
+      //    }
+      //    getPrice() {
+      //       return this.price;
+      //    }
+      // }
+      // const phpCourse = new Course('PHP',100);
+      // const javascriptCourse = new Course('JavaScript',100);
+      // console.log(phpCourse);
+      // console.log(javascriptCourse);
+
+
+//Enhanced object literals 
+   //1. Định nghĩa key: value cho object ngắn gọn hơn.
+   //2. Định nghĩa method cho object
+   //3. Định nghĩa key cho object dưới dạng biến
+
+   // var name = 'JavaScript';
+   // var price = 1000;
+   // var course = {
+   //    //1. nếu mà key và value cùng một tên thì bỏ bớt đi một cái
+   //    name,
+   //    price,
+   //    //2.
+   //    getName() {
+   //       return name;
+   //    }
+   // };
+
+   // console.log(course.getName())
+
+   //3.
+      // var fieldName  = 'name';
+      // var fieldPrice = 'price';
+
+      // const course = {
+      //    [fieldName]: 'JavaScript',
+      //    [fieldPrice]: 1000
+      // }
+
+      // console.log(course)
+
+//Default parameter values: Định nghĩa nhứng giá trị mặc định cho tham số
+//Liên quan đến hàm (function)
+//Khi nào sẽ dùng nó: Khi mình định nghĩa ra một hàm, và mình biết
+//được là có những tham số không bắt buộc phải nhập,
+//thường sẽ là sau tham số thứ nhất
+
+
+   //Cách bình thường ES5  
+   // function logger(log){
+   //    if(typeof log === 'undefined'){
+   //       log = 'Giá trị mặc định!!!';
+   //    }
+   //    console.log(log);
+   // }
+
+   //Cách ES6
+   // function logger(log = 'Giá trị mặc định'){
+   //    console.log(log);
+   // }
+
+   // function logger(log,isAlert){
+   //    if(isAlert) return alert(log);
+   //    console.log(log);
+   // }
+
+   // function logger (log,type='log'){
+   //    console[type](log); 
+   // }
+   // logger('hi','error');
+
+
+//Destructuring: Phân rã. Dùng cho Object và Array
+
+//Array
+var array = ['JavaScript','PHP','Ruby'];
+//Lấy những giá trị của arr gán vào các biến a,b,c
+//Cách bình thường
+
+// var a = array[0]
+// var b = array[1]
+// var c = array[2]
+
+//ES6
+var [a, ,c] = array;
+console.log(a, c);
+
+//Rest(khi sử dụng với destructuring): lấy ra những phần còn lại
+var [a, ...rest] = array;
+console.log(rest);
+
+//Object: có thể sử dụng với Rest
+var course = {
+   name: 'JavaScript',
+   price: 100
+};
+//xóa đi một key trong object
+var {name,...newObject} = course;
+var {name,price} = course;  
+
+console.log(newObject);
