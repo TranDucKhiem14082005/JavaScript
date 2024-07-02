@@ -1718,30 +1718,126 @@ document.querySelector('button').onclick =
 
 //Destructuring: Phân rã. Dùng cho Object và Array
 
+   // //Array
+   // var array = ['JavaScript','PHP','Ruby'];
+   // //Lấy những giá trị của arr gán vào các biến a,b,c
+   // //Cách bình thường
+
+   // // var a = array[0]
+   // // var b = array[1]
+   // // var c = array[2]
+
+   // //ES6
+   // var [a, ,c] = array;
+   // console.log(a, c);
+
+   // //Rest(khi sử dụng với destructuring): lấy ra những phần còn lại
+   // var [a, ...rest] = array;
+   // console.log(rest);
+
+   // //Object: có thể sử dụng với Rest
+   // var course = {
+   //    name: 'JavaScript',
+   //    price: 100
+   // };
+   // //xóa đi một key trong object
+   // var {name,...newObject} = course;
+   // var {name,price} = course;  
+
+   // console.log(newObject);
+
+   // function logger({name,price,...rest}){
+   //    console.log(name);
+   //    console.log(price);
+   //    console.log(rest)
+   // };
+
+   // logger({
+   //    name: 'javaScript',
+   //    price: 1000,
+   //    description: 'Description content'
+   // })
+
+
+   // function logger([a,b,...rest]) {
+   //    console.log(a);
+   //    console.log(b);
+   //    console.log(rest);
+   // }
+
+   // logger([2, 6, 8, 9, 10]);
+
+//Spread: toan tu giai
 //Array
-var array = ['JavaScript','PHP','Ruby'];
-//Lấy những giá trị của arr gán vào các biến a,b,c
-//Cách bình thường
+   // var array1 = ['JS','Ruby'];
+   // var array2  = ['Dart','PHP'];
 
-// var a = array[0]
-// var b = array[1]
-// var c = array[2]
+   // var array3 = [...array2,...array1];
 
-//ES6
-var [a, ,c] = array;
-console.log(a, c);
+   // console.log(array3)
 
-//Rest(khi sử dụng với destructuring): lấy ra những phần còn lại
-var [a, ...rest] = array;
-console.log(rest);
+//Object
+   // var object1 = {
+   //    name:'JavaScript'
+   // };
 
-//Object: có thể sử dụng với Rest
-var course = {
-   name: 'JavaScript',
-   price: 100
-};
-//xóa đi một key trong object
-var {name,...newObject} = course;
-var {name,price} = course;  
+   // var object2 = {
+   //    price: 1000
+   // };
 
-console.log(newObject);
+   // var object3 = {
+   //    ...object1,
+   //    ...object2
+   // }
+
+   // console.log(object3)
+
+   // var defautConfig = {
+   //    api: 'https://domain-trang-khoa-hoc',
+   //    apiVerson: '1',
+   //    orther: 'other'
+   // }
+
+   // var exerciseConfig = {
+   //    ...defautConfig,
+   //    api: 'https://domain-trang-bai-tap '
+   // }
+
+   // console.log(exerciseConfig);
+
+   // //Toan tu Spread cho viec truyen tham so cho ham 
+   // var array = ['JavaScript','PHP','Ruby'];
+
+   // function logger(...rest){
+   //    for(var i=0;i<rest.length;i++){
+   //       console.log(rest[i])
+   //    }
+   // }
+
+   // logger(...array)//Spread
+
+//Tagged template literals: 
+//Day la function use Tagged template literals.
+   // function highlight([first, ...strings], ...values) {
+   //    return values.reduce(
+   //       (acc, curr) => [...acc, `<span>${curr}</span>`,strings.shift()],
+   //        [first]
+   //    )
+   //    .join('');
+   // }
+
+   // // Hoc lap trinh <span>JavaScript</span> tai(noi vao va xoa di pt dau) <span>F8</span>!
+
+   // var brand = 'F8';
+   // var course = 'JavaScript';
+
+   // const html = highlight`Hoc lap trinh ${course} tai ${brand}!`;
+
+   // console.log(html);
+
+
+//Module in JavaScript ES6.
+   //Import/Export
+
+
+//Optional chaining (?.): sd khi khong thuc su chac chan cai key do ton tai
