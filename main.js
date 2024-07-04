@@ -1851,35 +1851,41 @@ document.querySelector('button').onclick =
 
    //2. Back-end: xây dựng logic xử lý + cơ sở dữ liệu
 
-// API (URL): Application programming interface: Giao diện lập trình ứng dụng
-// Cổng giao tiếp giữa các phần mền
+   // API (URL): Application programming interface: Giao diện lập trình ứng dụng
+   // Cổng giao tiếp giữa các phần mền
 
-// Backend -> API ->Fetch ->JSON/XML (JSON)
+   // Backend -> API ->Fetch ->JSON/XML (JSON)
 
-// ->JSON.parse -> JavaScript types
+   // ->JSON.parse -> JavaScript types
 
-// -> Render ra giao diện với HTML 
+   // -> Render ra giao diện với HTML 
 
 
-var postApi = 
-   'https://jsonplaceholder.typicode.com/posts';
+   // var postApi = 
+   //    'https://jsonplaceholder.typicode.com/posts';
 
-fetch(postApi) //tra ve stream(response)
-   .then(function(response){
-      return response.json(); //JONS.parse: JSON -> JS types
-   })
-   .then(function(posts){
-      var htmls = posts.map(function(post){
-         return `<li>
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
-         </li>`;
-      });
+   // fetch(postApi) //tra ve stream(response)
+   //    .then(function(response){
+   //       return response.json(); //JONS.parse: JSON -> JS types
+   //    })
+   //    .then(function(posts){
+   //       var htmls = posts.map(function(post){
+   //          return `<li>
+   //             <h2>${post.title}</h2>
+   //             <p>${post.body}</p>
+   //          </li>`;
+   //       });
 
-      var html = htmls.join('');
-      document.getElementById('post-block').innerHTML = html;
-   })
-   .catch(function(err){
-      alert('has a error!');
-   });
+   //       var html = htmls.join('');
+   //       document.getElementById('post-block').innerHTML = html;
+   //    })
+   //    .catch(function(err){
+   //       alert('has a error!');
+   //    });
+
+// JSON server
+
+
+
+// Work use Postman  with REST API
 
